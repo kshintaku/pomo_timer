@@ -17,13 +17,14 @@ resolve issue of timer ending and skipping 1 second while playing sound
 
 """
 
-import PySimpleGUIQt as sg
+import PySimpleGUI as sg
 import os
+import sys
 
 # import time as t
 
 sg.theme("DarkBrown4")
-pomodoro = 0.1
+pomodoro = 25
 sec = int(pomodoro * 60)
 minn, secc = divmod(sec, 60)
 time_format = "{:02d}:{:02d}".format(minn, secc)
@@ -35,7 +36,7 @@ layout = [
     [
         sg.Text(
             text=time_format,
-            size=(14, 1.2),
+            size=(8, 1),
             font="Arial 45",
             key="-OUT-",
             justification="center",
@@ -47,7 +48,7 @@ layout = [
             font="Arial 20",
             disabled=False,
             key="btn1",
-            size=(8, 1)
+            size=(8, 1),
         ),
         sg.Button(
             button_text="Reset",
@@ -91,7 +92,10 @@ while True:
         window["btn1"].update("Start")
         window["btn2"].update(disabled=True)
     if time_format == "00:01":
-        os.system('say "got it done"')
+        if sys.platform.startswith("darwin"):
+            os.system('say "got it done"')
+        elif sys.platform.startswith("linux"):
+            os.system('spd-say "got it done"')
         time_format = "00:00"
         window["-OUT-"].update(time_format)
         running = False
