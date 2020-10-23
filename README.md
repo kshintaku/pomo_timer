@@ -1,6 +1,6 @@
 # Pomodoro Timer
 
-![Screen Shot of Pomo Timer](https://raw.githubusercontent.com/kshintaku/pomo_timer/main/images/ss.png)
+![Screen Shot of Pomo Timer](https://raw.githubusercontent.com/kshintaku/pomo_timer/main/images/ss.webp)
 
 I created this timer because I wanted a simple pomodoro timer that I could use while streaming. Having it as it's own window allows me to capture it with OBS without having it take up screen space as other windows can be on top of it and still get captured.
 
